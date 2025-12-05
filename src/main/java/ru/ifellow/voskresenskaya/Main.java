@@ -1,13 +1,14 @@
 
 package ru.ifellow.voskresenskaya;
 
+import ru.ifellow.voskresenskaya.model.cars.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
 
 public class Main {
 
-    // 1) Вывод всех авто после 2006
     public static void carsAfter2006(List<Car> cars) {
         for (Car i : cars) {
             if (i.isAfterYear(2006)) {
@@ -18,16 +19,14 @@ public class Main {
         }
     }
 
-    // 2) Замена цвета
-    public static void changeGreenToRed(List<Car> cars) {
+    public static void changeColor(List<Car> cars, String oldColor, String newColor) {
         for (Car c : cars) {
-            if (c.getColor().equalsIgnoreCase("green")) {   // ← правильно
-                c.setColor("red");
+            if (c.getColor().equals(oldColor)) {
+                c.setColor(newColor);
             }
         }
     }
 
-    // 3) Поиск самого нового авто
     public static void printNewestCar(List<Car> cars) {
         cars.stream()
                 .max(Comparator.comparingInt(Car::getYear))
@@ -50,12 +49,12 @@ public class Main {
         cars.add(new Dodge("Challenger", 2019, true, "Gray", 410000, 3));
         cars.add(new Dodge("Caravan", 2007, true, "Red", 500000, 9));
 
-        // Тесты
+
         System.out.println("=== After 2006 ===");
         carsAfter2006(cars);
 
-        System.out.println("\n=== Change Green -> Red ===");
-        changeGreenToRed(cars);
+        System.out.println("\n=== Change Color ===");
+        changeColor(cars,"Black","White");
         cars.forEach(c -> System.out.println(c.getInfo()));
 
         System.out.println("\n=== Newest Car ===");
