@@ -52,8 +52,7 @@ public abstract class Car {
 
     public int getYear() {
         return year;
-    }git
-
+    }
     public void printModel() {
         System.out.println("Model: " + this.model);
     }
